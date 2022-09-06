@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <navbar>
+        <div class="navbar">
+            <p class="font1">Tasks </p>
+            <p class="font2">List</p>
+        </div>
+    </navbar>
+    <div class="container">
+        <!-- <a href="#" class="fa fa-plus"></a> -->
+        <div class="btnpos">
+            <div class="btn" id="b1" onclick="add()">+</div>
+            <div style="display:inline; padding-top: 0.5rem;">
+                <p class="font3">Add New Task</p>
+            </div>
+        </div>
+
+
+        <div class="box" id="_box">
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        var j = 1;
+        function add() {
+            var head1 = String(prompt("Please Enter the Heading"));
+            var item1 = Number(prompt("Enter Number of Tasks (Enter Only Number)"));
+            var arr1 = new Array();
+            for (var i = 0; i < item1; i++) {
+                arr1[i] = prompt("ENTER " + (i + 1) + " ELEMENT");
+            }
+            var boxd = document.getElementById("_box");
+            var box1 = document.createElement("div");
+            box1.className = "box1";
+            box1.innerHTML += `<h3>${head1}</h3>`;
+            for (var i = 0; i < item1; i++) {
+                if (arr1[i] != "") {
+                    box1.innerHTML += `<h4>             
+                                            <input type="checkbox" id="id${j}" onclick="checkl()">
+                                            <label for="id${j}" id="label${j}">${arr1[i]}</label>
+                                    </h4>`;
+                    j++;
+                }
+            }
+            if ((head1 !== "" && item1 != null))
+                boxd.appendChild(box1);
+        }
+        function checkl() {
+            for (var i = 1; i <= j; i++) {
+                var checkb = document.getElementById("id" + i);
+                if (checkb.checked == true) {
+                    document.getElementById("label" + i).style.textDecorationLine = "line-through";
+                    document.getElementById("label" + i).style.color = "#C2C2C2";
+                } else {
+                    document.getElementById("label" + i).style.textDecorationLine = "none";
+                    document.getElementById("label" + i).style.color = "#424242";
+                }
+            };
+        }
+    </script>
+</body>
+
+</html>
